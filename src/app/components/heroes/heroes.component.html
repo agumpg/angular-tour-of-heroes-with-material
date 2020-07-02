@@ -1,0 +1,33 @@
+<div class="container mx-auto mt-10">
+    <mat-card>
+
+        <div *ngIf="selectedHero">
+            <mat-form-field appearance="fill"
+                            class="w-1/2">
+                <mat-label>Héroe</mat-label>
+                <input matInput
+                       [(ngModel)]="selectedHero.name">
+            </mat-form-field>
+        </div>
+
+        <mat-action-list>
+            <button *ngFor="let hero of heroes"
+                    mat-list-item
+                    (click)="onSelectHero(hero)">
+                <span class="bg-blue-800 text-white  p-2 rounded-l-lg">{{ hero.id }} </span>
+                <span class="text-uppercase ml-2 font-light"
+                      [class.text-pink-600]="hero === selectedHero"> {{ hero.name | uppercase }}</span>
+            </button>
+        </mat-action-list>
+
+
+        <!--         <mat-selection-list [multiple]="false">
+            <mat-list-option *ngFor="let hero of heroes">
+                <div class="flex">
+                    <span class="bg-pink-200 text-xs px-2 rounded-full">{{ hero.id }} </span>
+                    <span class="ml-4 text-uppercase font-light"> {{ hero.name | uppercase }}</span>
+                </div>
+            </mat-list-option>
+        </mat-selection-list> -->
+    </mat-card>
+</div>
