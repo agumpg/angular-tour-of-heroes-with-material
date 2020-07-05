@@ -1,7 +1,23 @@
 <div class="container mx-auto mt-10">
-    <div class="flex justify-center space-x-4">
-        <div class="mat-elevation-z2 btn-hero " *ngFor="let hero of heroes" (click)="onSelectHero(hero)" matRipple>
-            {{hero.name}}
-        </div>
-    </div>
+    <mat-card>
+        <mat-card-title class="text-center font-hairline uppercase border-b p-4 border-gray-200 ">Tops Héroe
+        </mat-card-title>
+        <mat-card-content class="mt-6">
+            <div class="flex justify-center space-x-4">
+                <div class="mat-elevation-z2 btn-hero "
+                     matTooltip="Editar {{hero.name}}"
+                     *ngFor="let hero of heroes"
+                     (click)="onSelectHero(hero)"
+                     matRipple>
+                    {{hero.name}}
+                </div>
+            </div>
+        </mat-card-content>
+        <mat-card-actions align="end">
+            <a mat-button
+               routerLink="/heroes">VER TODOS</a>
+        </mat-card-actions>
+
+    </mat-card>
+
 </div>

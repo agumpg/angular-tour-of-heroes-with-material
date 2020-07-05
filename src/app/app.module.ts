@@ -11,6 +11,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HeroDetailComponent } from './components/hero-detail/hero-detail.component';
 import { MessagesComponent } from './components/messages/messages.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { SwitchLogsComponent } from './components/switch-logs/switch-logs.component';
 
 @NgModule( {
   declarations: [
@@ -19,7 +20,8 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     HeroesComponent,
     HeroDetailComponent,
     MessagesComponent,
-    DashboardComponent
+    DashboardComponent,
+    SwitchLogsComponent
   ],
   imports: [
     BrowserModule,

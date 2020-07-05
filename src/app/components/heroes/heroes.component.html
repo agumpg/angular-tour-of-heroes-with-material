@@ -1,13 +1,21 @@
-<div class="container mx-auto mt-10">
+<div class="container mx-auto mt-10 animate__animated animate__fadeIn">
     <mat-card>
         <mat-card-title class="text-center font-hairline uppercase border-b p-4 border-gray-200">Mis Héroes
         </mat-card-title>
         <mat-action-list class="mt-6">
-            <button *ngFor="let hero of heroes" mat-list-item (click)="onSelectHero(hero)">
+            <button *ngFor="let hero of heroes"
+                    mat-list-item
+                    (click)="onSelectHero(hero)">
                 <span class="bg-blue-800 text-white  p-2 rounded-l-lg">{{ hero.id }} </span>
-                <span class="text-uppercase ml-2 font-light" [class.text-pink-600]="hero === selectedHero">
+                <span class="text-uppercase ml-2 font-light"
+                      [class.text-pink-600]="hero === selectedHero">
                     {{ hero.name | uppercase }}</span>
             </button>
         </mat-action-list>
+        <mat-card-actions align="end">
+            <a mat-button
+               routerLink="/dashboard">VER TOPS</a>
+        </mat-card-actions>
+
     </mat-card>
 </div>
