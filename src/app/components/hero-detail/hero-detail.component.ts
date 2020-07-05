@@ -3,13 +3,13 @@ import { Hero } from '../../hero';
 import { ActivatedRoute } from '@angular/router';
 import { HeroService } from '../../services/hero.service';
 import { Location } from '@angular/common';
-import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormControl, AbstractControl } from '@angular/forms';
 
-@Component( {
+@Component({
   selector: 'app-hero-detail',
   templateUrl: './hero-detail.component.html',
   styleUrls: ['./hero-detail.component.css']
-} )
+})
 export class HeroDetailComponent implements OnInit {
 
   @Input() hero: Hero;
@@ -29,22 +29,41 @@ export class HeroDetailComponent implements OnInit {
   }
 
   getHero(): void {
-    const id = +this.route.snapshot.paramMap.get( 'id' );
-    this.heroService.getHero( id )
+    const id = +this.route.snapshot.paramMap.get('id');
+    this.heroService.getHero(id)
       .subscribe(
-        hero => { this.hero = hero; } );
+        hero => { this.hero = hero; });
   }
 
   getDisabledValue(): boolean {
     return true;
   }
 
-  private buildForm(): void {
-    this.formHero = this.formBuilder.group( {
-      id: [{ value: this.hero.id, disabled: true }],
-      name: [this.hero.name, Validators.required]
-    } );
 
+  get nameField(): AbstractControl {
+    return this.formHero.get('name');
+  }
+
+  getNameFieldErrors(): string {
+    if (this.nameField.hasError('maxlength')) {
+      return 'Nombre demasiado largo. Introduce un nombre de hasta 20 caracteres';
+    }
+    return 'El nombre no puede ser vacío. Debe introducir un nombre de héroe';
+  }
+
+  get idField(): AbstractControl {
+    return this.formHero.get('id');
+  }
+
+  goBack(): void {
+    this.location.back();
+  }
+
+  private buildForm(): void {
+    this.formHero = this.formBuilder.group({
+      id: [{ value: this.hero.id, disabled: true }],
+      name: [this.hero.name, [Validators.required, Validators.maxLength(20)]]
+    });
   }
 
 }
