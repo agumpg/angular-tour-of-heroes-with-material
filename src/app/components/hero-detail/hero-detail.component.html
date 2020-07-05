@@ -1,4 +1,4 @@
-<div class="container mx-auto mt-10">
+<div class="container mx-auto mt-10 animate__animated animate__bounceInRight">
     <mat-card>
         <mat-card-title class="text-center font-hairline uppercase border-b p-4 border-gray-200 ">Información del Héroe
         </mat-card-title>
@@ -6,15 +6,19 @@
             <form [formGroup]="formHero">
                 <div class="flex space-x-4">
                     <div class="w-1/4 mt-6">
-                        <mat-form-field appearance="fill" class="w-full ">
+                        <mat-form-field appearance="fill"
+                                        class="w-full ">
                             <mat-label>Id</mat-label>
-                            <input matInput formControlName="id">
+                            <input matInput
+                                   formControlName="id">
                         </mat-form-field>
                     </div>
                     <div class="w-3/4 mt-6">
-                        <mat-form-field appearance="fill" class="w-full">
+                        <mat-form-field appearance="fill"
+                                        class="w-full">
                             <mat-label>Nombre del Héroe</mat-label>
-                            <input matInput formControlName="name">
+                            <input matInput
+                                   formControlName="name">
                             <mat-hint align="end">{{nameField.value?.length || 0}}/20</mat-hint>
                             <mat-error *ngIf="nameField.invalid"> {{getNameFieldErrors()}} </mat-error>
                         </mat-form-field>
@@ -23,9 +27,16 @@
             </form>
         </mat-card-content>
         <mat-card-actions align="end">
-            <button mat-button color="" class="" (click)="goBack()">CANCELAR</button>
-            <button mat-button color="primary" class="" type="submit" (click)="saveHero()"
-                [disabled]="formHero.invalid">GUARDAR</button>
+            <button mat-button
+                    color=""
+                    class=""
+                    (click)="goBack()">CANCELAR</button>
+            <button mat-button
+                    color="primary"
+                    class=""
+                    type="submit"
+                    (click)="saveHero()"
+                    [disabled]="formHero.invalid">GUARDAR</button>
         </mat-card-actions>
     </mat-card>
 </div>

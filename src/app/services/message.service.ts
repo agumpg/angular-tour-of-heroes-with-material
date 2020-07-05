@@ -6,6 +6,7 @@ import { Injectable } from '@angular/core';
 export class MessageService {
 
   messages: string[] = [];
+  visibled: boolean = true;
 
   constructor() { }
 
@@ -16,4 +17,9 @@ export class MessageService {
   clear(): void {
     this.messages = [];
   }
+
+  changeVisibled(): void {
+    this.visibled = !this.visibled;
+  }
+
 }
