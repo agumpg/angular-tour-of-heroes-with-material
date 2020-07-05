@@ -1,52 +1,13 @@
 <div class="container mx-auto mt-10">
     <mat-card>
-
         <mat-card-title class="text-center font-hairline uppercase border-b p-4 border-gray-200">Mis Héroes
         </mat-card-title>
-
-        <!--         <div *ngIf="!selectedHero">
-            <div class="bg-teal-100 border-t-4 border-teal-500 rounded-b text-teal-900 px-4 py-3 shadow-md"
-                 role="alert">
-                <div class="flex">
-                    <div class="py-1"><svg class="fill-current h-6 w-6 text-teal-500 mr-4"
-                             xmlns="http://www.w3.org/2000/svg"
-                             viewBox="0 0 20 20">
-                            <path
-                                  d="M2.93 17.07A10 10 0 1 1 17.07 2.93 10 10 0 0 1 2.93 17.07zm12.73-1.41A8 8 0 1 0 4.34 4.34a8 8 0 0 0 11.32 11.32zM9 11V9h2v6H9v-4zm0-6h2v2H9V5z" />
-                        </svg></div>
-                    <div>
-                        <p class="font-bold">Listado de Héroes</p>
-                        <p class="text-sm">Seleccione el héroe que desea modificar</p>
-                    </div>
-                </div>
-            </div>
-        </div> -->
-
-        <!--         <div *ngIf="selectedHero">
-            <mat-form-field appearance="fill"
-                            class="w-1/2">
-                <mat-label>Nombre del Héroe</mat-label>
-                <input matInput
-                       [(ngModel)]="selectedHero.name">
-            </mat-form-field>
-        </div> -->
-
         <mat-action-list class="mt-6">
-            <button *ngFor="let hero of heroes"
-                    mat-list-item
-                    (click)="onSelectHero(hero)">
+            <button *ngFor="let hero of heroes" mat-list-item (click)="onSelectHero(hero)">
                 <span class="bg-blue-800 text-white  p-2 rounded-l-lg">{{ hero.id }} </span>
-                <span class="text-uppercase ml-2 font-light"
-                      [class.text-pink-600]="hero === selectedHero"> {{ hero.name | uppercase }}</span>
+                <span class="text-uppercase ml-2 font-light" [class.text-pink-600]="hero === selectedHero">
+                    {{ hero.name | uppercase }}</span>
             </button>
         </mat-action-list>
     </mat-card>
-
-    <!--     <mat-divider></mat-divider>
-
-    <div class="mt-10"
-         *ngIf="selectedHero">
-        <app-hero-detail [hero]="selectedHero"></app-hero-detail>
-    </div> -->
-
 </div>
