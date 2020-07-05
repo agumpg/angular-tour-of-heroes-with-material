@@ -35,15 +35,25 @@ export class HeroDetailComponent implements OnInit {
         hero => { this.hero = hero; });
   }
 
-  getDisabledValue(): boolean {
-    return true;
+  saveHero(): void {
+    this.heroService.saveHero(this.hero.id, this.nameField.value);
+    this.location.back();
   }
 
+  goBack(): void {
+    this.location.back();
+  }
+
+  // GETTERs de campos del formulario
+  get idField(): AbstractControl {
+    return this.formHero.get('id');
+  }
 
   get nameField(): AbstractControl {
     return this.formHero.get('name');
   }
 
+  // Lectura de errores de campos
   getNameFieldErrors(): string {
     if (this.nameField.hasError('maxlength')) {
       return 'Nombre demasiado largo. Introduce un nombre de hasta 20 caracteres';
@@ -51,14 +61,7 @@ export class HeroDetailComponent implements OnInit {
     return 'El nombre no puede ser vacío. Debe introducir un nombre de héroe';
   }
 
-  get idField(): AbstractControl {
-    return this.formHero.get('id');
-  }
-
-  goBack(): void {
-    this.location.back();
-  }
-
+  // Construcción del Formulario
   private buildForm(): void {
     this.formHero = this.formBuilder.group({
       id: [{ value: this.hero.id, disabled: true }],

@@ -24,7 +24,8 @@
         </mat-card-content>
         <mat-card-actions align="end">
             <button mat-button color="" class="" (click)="goBack()">CANCELAR</button>
-            <button mat-button color="primary" class="" type="submit" [disabled]="formHero.invalid">GUARDAR</button>
+            <button mat-button color="primary" class="" type="submit" (click)="saveHero()"
+                [disabled]="formHero.invalid">GUARDAR</button>
         </mat-card-actions>
     </mat-card>
 </div>
