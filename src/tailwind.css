@@ -2,4 +2,8 @@
 
 @tailwind components;
 
+.btn-hero {
+  @apply w-1/4 p-10 text-center text-xl uppercase cursor-pointer;
+}
+
 @tailwind utilities;
