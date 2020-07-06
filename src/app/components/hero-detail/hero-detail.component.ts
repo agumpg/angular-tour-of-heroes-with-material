@@ -15,6 +15,7 @@ export class HeroDetailComponent implements OnInit {
 
   @Input() hero: Hero;
   formHero: FormGroup;
+  loading: boolean = false;
 
 
   constructor(
@@ -25,11 +26,13 @@ export class HeroDetailComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.loading = !this.loading;
     this.getHero()
       .subscribe(
         hero => {
           this.hero = hero;
           this.buildForm();
+          this.loading = !this.loading;
         } );
   }
 
