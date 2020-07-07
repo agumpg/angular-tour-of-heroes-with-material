@@ -8,12 +8,10 @@ import { MessageService } from '../../services/message.service';
 } )
 export class SwitchLogsComponent implements OnInit {
 
-  checked: boolean;
 
   constructor( public messageService: MessageService ) { }
 
   ngOnInit(): void {
-    this.checked = this.messageService.visibled;
   }
 
 

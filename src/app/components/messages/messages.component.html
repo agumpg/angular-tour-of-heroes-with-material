@@ -1,14 +1,14 @@
 <div *ngIf="messageService.visibled"
      class="container mx-auto mt-10">
-    <mat-card class="bg-gray-900 shadow-xl">
-        <mat-card-title class="text-gray-300 font-hairline mb-10 uppercase text-md">Sistema de Logs</mat-card-title>
+    <mat-card class="animate__animated animate__bounceInUp">
+        <mat-card-title class="text-pink-500 font-hairline mb-10 uppercase text-md">Sistema de Logs</mat-card-title>
         <mat-card-content>
             <ul>
                 <div *ngFor="let message of getMessages()">
-                    <li class="text-green-500 text-xs uppercase">
+                    <li class="text-blue-700 text-xs uppercase">
                         {{message}}
                     </li>
-                    <mat-divider class="border-b-1 border-gray-700"></mat-divider>
+                    <mat-divider class="border-b-1 border-gray-300"></mat-divider>
                 </div>
             </ul>
         </mat-card-content>

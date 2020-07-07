@@ -9,7 +9,7 @@
             </div>
         </ng-container>
         <ng-template #elseTemplate>
-            <mat-action-list class="mt-6 animate__animated animate__fadeIn">
+            <mat-action-list class="mt-6 mb-6 animate__animated animate__fadeIn">
                 <button *ngFor="let hero of heroes"
                         mat-list-item
                         (click)="onSelectHero(hero)">
@@ -20,9 +20,18 @@
                 </button>
             </mat-action-list>
         </ng-template>
+        <mat-divider></mat-divider>
         <mat-card-actions align="end">
             <a mat-button
                routerLink="/dashboard">VER TOPS</a>
+            <a mat-raised-button
+               color="primary"
+               class=""
+               routerLink="/dashboard">
+                AÑADIR
+
+
+            </a>
         </mat-card-actions>
     </mat-card>
 </div>
