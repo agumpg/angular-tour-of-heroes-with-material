@@ -3,9 +3,10 @@ import { Hero } from '../hero';
 import { HEROES_DATA } from '../mock-heroes';
 import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
-import { MessageService } from './message.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MessageService } from './message.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { SnakBarCustomComponent } from '../components/snak-bar-custom/snak-bar-custom.component';
 
 @Injectable( {
   providedIn: 'root'
@@ -72,9 +73,9 @@ export class HeroService {
       return of( [] );
     }
     return this.http.get<Hero[]>( `${ this.heroesUrl }/?name=${ term }` ).pipe(
-      tap( x => x.length ?
-        this.log( `found heroes matching "${ term }"` ) :
-        this.log( `no heroes matching "${ term }"` ) ),
+      tap( x => x.length
+        ? this.log( `found heroes matching "${ term }"` )
+        : this.log( `no heroes matching "${ term }"` ) ),
       catchError( this.handleError<Hero[]>( 'searchHeroes', [] ) )
     );
   }
@@ -107,12 +108,23 @@ export class HeroService {
       .pipe(
         tap( _ => {
           this.log( `Actualización del héroe con id=${ hero.id } y name=${ hero.name }` ),
-            this.snackBar.open( 'Héroe Actualizado!', 'OK', { duration: 2000 } );
+            this.openSnackBar( 'Héroe Actualizado' );
+          /* this.snackBar.openFromComponent( SnakBarCustomComponent, {
+            duration: 2000,
+          } ); */
+          //this.snackBar.open( 'Héroe Actualizado!', 'OK', { duration: 2000 } );
         } ),
         catchError( this.handleError<any>( 'updateHero' ) )
       );
   }
 
+
+  private openSnackBar( message: string ) {
+    this.snackBar.openFromComponent( SnakBarCustomComponent, {
+      data: message,
+      duration: 3000
+    } );
+  }
 
 
   /**
@@ -135,13 +147,9 @@ export class HeroService {
     };
   }
 
-
-
-
   /** Log a HeroService message with the MessageService */
   private log( message: string ) {
     this.messageService.add( `HeroService: ${ message }` );
   }
-
 
 }

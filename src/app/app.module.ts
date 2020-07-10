@@ -16,6 +16,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './services/in-memory-data.service';
+import { SnakBarCustomComponent } from './components/snak-bar-custom/snak-bar-custom.component';
 
 @NgModule( {
   declarations: [
@@ -25,7 +26,8 @@ import { InMemoryDataService } from './services/in-memory-data.service';
     HeroDetailComponent,
     MessagesComponent,
     DashboardComponent,
-    SwitchLogsComponent
+    SwitchLogsComponent,
+    SnakBarCustomComponent
   ],
   imports: [
     BrowserModule,
